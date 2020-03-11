@@ -1,0 +1,26 @@
+version: '2.1'
+
+services:
+  vuetestapp-server:
+    container_name: vuetestapp-server
+    build: 
+      context: ./server
+    volumes:
+      - ./server:/usr/app
+      - /usr/app/node_modules
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8000:8000
+
+  vuetestapp-client:
+    container_name: vuetestapp-client
+    build: 
+      context: ./client
+    volumes:
+      - ./client:/usr/app
+      - /usr/app/node_modules
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8081:8080
